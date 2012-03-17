@@ -1,0 +1,20 @@
+This repo shows how to create curves as the same as Photoshop does.
+
+The Photoshop's curves theory is described at the following page by pseudocode:
+http://www.developpez.net/forums/d331608-3/autres-langages/algorithmes/contribuez/image-interpolation-spline-cubique/#post3513925
+
+Though I don't know how to read French, here is the kernel theory described by pseudocode:
+
+Car la matrice est calculée pour un espacement fixe. I faut donc calculer explicitement les 4 courbes de bases pour chaque intervalle. 
+
+Une methode plus simple (rapide) consiste a évaluer le polynome d'une spline cubique. Pour cela on a besoin de connaitre la derivée seconde de la spline pour chaque point de passage.
+
+On repart de l'équation de la spline, et on résout le système d'équations. Fort heureusement, ce système d'équations est sympathique car linéaire (par rapport à y") et tri-diagonal:
+
+E(i) : a.y"(i-1)   b.y"(i)   c.y"(i 1) = d
+
+avec 
+a = (x(i)-x(i-1))/6
+b = (x(i 1)-x(i-1))/3
+c = (x(i 1)-x(i))/6
+d = (y(i 1)-y(i))/(x(i 1)-x(i)) - (y(i)-y(i-1))/(x(i)-x(i-1))
