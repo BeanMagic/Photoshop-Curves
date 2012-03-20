@@ -15,6 +15,7 @@
 		426EFA81150DAA4F00831176 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 426EFA80150DAA4F00831176 /* AppDelegate.m */; };
 		426EFA84150DAA4F00831176 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426EFA83150DAA4F00831176 /* ViewController.m */; };
 		426EFA8F150DAA6800831176 /* CurvesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 426EFA8E150DAA6800831176 /* CurvesHelper.m */; };
+		42E6AD8915185A3800854C59 /* CurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E6AD8815185A3800854C59 /* CurveView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		426EFA83150DAA4F00831176 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		426EFA8D150DAA6800831176 /* CurvesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurvesHelper.h; sourceTree = "<group>"; };
 		426EFA8E150DAA6800831176 /* CurvesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurvesHelper.m; sourceTree = "<group>"; };
+		42E6AD8715185A3800854C59 /* CurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurveView.h; sourceTree = "<group>"; };
+		42E6AD8815185A3800854C59 /* CurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurveView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,8 @@
 				426EFA8E150DAA6800831176 /* CurvesHelper.m */,
 				426EFA82150DAA4F00831176 /* ViewController.h */,
 				426EFA83150DAA4F00831176 /* ViewController.m */,
+				42E6AD8715185A3800854C59 /* CurveView.h */,
+				42E6AD8815185A3800854C59 /* CurveView.m */,
 				426EFA77150DAA4F00831176 /* Supporting Files */,
 			);
 			path = PSCurves;
@@ -165,6 +170,7 @@
 				426EFA81150DAA4F00831176 /* AppDelegate.m in Sources */,
 				426EFA84150DAA4F00831176 /* ViewController.m in Sources */,
 				426EFA8F150DAA6800831176 /* CurvesHelper.m in Sources */,
+				42E6AD8915185A3800854C59 /* CurveView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,33 +13,58 @@
 
 - (void)drawWithPoints:(NSArray *)points
 {
+    points = [points sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2)
+    {
+        CGPoint point1 = [obj1 CGPointValue];
+        CGPoint point2 = [obj2 CGPointValue];
+        NSComparisonResult rst;
+        if (point1.x > point2.x) rst = NSOrderedDescending;
+        if (point1.x == point2.x) rst = NSOrderedSame;
+        if (point1.x < point2.x) rst = NSOrderedAscending;
+        return rst;
+    }];
     [_curveView removeFromSuperview];
     _curveView = nil;
-    _curveView = [[UIImageView alloc] initWithFrame:CGRectMake(160 - 256 / 2, 20, 256, 256)];
+    _curveView = [[CurveView alloc] initWithFrame:CGRectMake(160 - 256 / 2, 20, 256, 256)];
     _curveView.backgroundColor = [UIColor whiteColor];
     NSArray *sd = [CurvesHelper secondDerivative:points];
     
-    for(int i = 0; i<[points count] - 1; i++) {
+    //初始化曲线前映射
+    int firstX = [[points objectAtIndex:0] CGPointValue].x;
+    int firstY = [[points objectAtIndex:0] CGPointValue].y;
+    for (int i = 0; i < firstX; i++)
+    {
+        [_curveView setColorMap:firstY toIndex:i];
+    }
+    
+    //初始化曲线映射
+    for(int i = 0; i<[points count] - 1; i++)
+    {
         CGPoint cur = [[points objectAtIndex:i] CGPointValue];
     	CGPoint next  = [[points objectAtIndex:i + 1] CGPointValue];
-        
-    	for(int x=cur.x;x<next.x;x++)
+    	for(int x=cur.x;x<=next.x;x++)
         {
             double t = (double)(x-cur.x)/(next.x-cur.x);
-            
             double a = 1-t;
             double b = t;
             double h = next.x-cur.x;
-            
             double y= a*cur.y + b*next.y + (h*h/6)*( (a*a*a-a)*[[sd objectAtIndex:i] doubleValue]+ (b*b*b-b)*[[sd objectAtIndex:i + 1] doubleValue]);
             
             if (y < 0) y = 0;
             if (y > 255) y = 255;
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(x, 256 - y, 1, 1)];
-            view.backgroundColor = [UIColor blackColor];
-            [_curveView addSubview:view];
+            [_curveView setColorMap:y toIndex:x];
         }
     }
+    
+    //初始化曲线后映射
+    int lastX = [[points lastObject] CGPointValue].x;
+    int lastY = [[points lastObject] CGPointValue].y;
+    for (int i = 255; i > lastX; i--)
+    {
+        [_curveView setColorMap:lastY toIndex:i];
+    }
+    
+    [_curveView setNeedsDisplay];
     [self.view addSubview:_curveView];
 }
 
@@ -57,9 +82,9 @@
         {
             textField.text = @"1";
         }
-        else if ([textField.text intValue] >254)
+        else if ([textField.text intValue] >255)
         {
-            textField.text = @"254";
+            textField.text = @"255";
         }
     }
     
@@ -107,7 +132,7 @@
     [control addTarget:self action:@selector(endEditing) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:control];
     
-    _curveView = [[UIImageView alloc] initWithFrame:CGRectMake(160 - 256 / 2, 20, 256, 256)];
+    _curveView = [[CurveView alloc] initWithFrame:CGRectMake(160 - 256 / 2, 20, 256, 256)];
     _curveView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_curveView];
     

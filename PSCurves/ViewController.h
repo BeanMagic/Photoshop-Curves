@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CurveView.h"
 
 @interface ViewController : UIViewController <UITextFieldDelegate>
 {
-    UIImageView *_curveView;
+    CurveView *_curveView;
     
     UITextField *_point1x;
     UITextField *_point1y;
