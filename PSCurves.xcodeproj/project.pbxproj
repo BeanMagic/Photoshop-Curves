@@ -16,6 +16,7 @@
 		426EFA84150DAA4F00831176 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426EFA83150DAA4F00831176 /* ViewController.m */; };
 		426EFA8F150DAA6800831176 /* CurvesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 426EFA8E150DAA6800831176 /* CurvesHelper.m */; };
 		42E6AD8915185A3800854C59 /* CurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E6AD8815185A3800854C59 /* CurveView.m */; };
+		42F47B621520709800BA029C /* README in Resources */ = {isa = PBXBuildFile; fileRef = 42F47B611520709800BA029C /* README */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		426EFA8E150DAA6800831176 /* CurvesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurvesHelper.m; sourceTree = "<group>"; };
 		42E6AD8715185A3800854C59 /* CurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurveView.h; sourceTree = "<group>"; };
 		42E6AD8815185A3800854C59 /* CurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurveView.m; sourceTree = "<group>"; };
+		42F47B611520709800BA029C /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		426EFA61150DAA4E00831176 = {
 			isa = PBXGroup;
 			children = (
+				42F47B611520709800BA029C /* README */,
 				426EFA76150DAA4F00831176 /* PSCurves */,
 				426EFA6F150DAA4F00831176 /* Frameworks */,
 				426EFA6D150DAA4F00831176 /* Products */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				426EFA7B150DAA4F00831176 /* InfoPlist.strings in Resources */,
+				42F47B621520709800BA029C /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

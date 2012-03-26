@@ -1,4 +1,6 @@
 This repo shows how to create curves as the same as Photoshop does.
+It looks like this:
+https://github.com/OpenFibers/Photoshop-Curves/blob/master/CurveDemo.png?raw=true
 
 The Photoshop's curves theory is described at the following page by pseudocode:
 http://www.developpez.net/forums/d331608-3/autres-langages/algorithmes/contribuez/image-interpolation-spline-cubique/#post3513925
