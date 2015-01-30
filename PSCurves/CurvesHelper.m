@@ -10,16 +10,23 @@
 
 @implementation CurvesHelper
 
-//+ (double[]) secondDerivative(Point... P)
-//传入数组包含全是CGPoint的字符串表示,传出数组包含全是double的NSNumber
+/*
+ * @param:pointArray : Key points as NSValue:
+ @[
+ [NSValue valueWithCGPoint:(CGPointMake(input1, output1))],
+ [NSValue valueWithCGPoint:(CGPointMake(input2, output2))],
+ ...
+ ]
+ * @return: second derivative array, each member is an NSNumber.
+ */
 + (NSArray *)secondDerivative:(NSArray *)pointArray;
 {
-	int n = [pointArray count];
-    if (n == 0)//不需生成导数
+	NSUInteger n = [pointArray count];
+    if (n == 0)//do not need generate derivative
     {
         return nil;   
     }
-    if (n == 1)//二阶导为0,return.以防下面对matrix[n-1]和result[n-1]赋值报错
+    if (n == 1)//derivative is 0,return. Avoid set value to matrix[n-1] or result[n-1] crashs
     {
         NSArray *returnArray = [NSArray arrayWithObject:[NSNumber numberWithFloat:0]];
         return returnArray;
@@ -31,7 +38,8 @@
 	matrix[0][1] = 1;
     matrix[0][2] = 0;
     result[0] = 0;
-	for(int i=1;i<n-1;i++) {
+	for(int i=1;i<n-1;i++)
+    {
         CGPoint pointI = [[pointArray objectAtIndex:i] CGPointValue];
         CGPoint pointIm1 = [[pointArray objectAtIndex:i-1] CGPointValue];
         CGPoint pointIp1 = [[pointArray objectAtIndex:i+1] CGPointValue];
@@ -46,7 +54,7 @@
     result[n-1] = 0;
     
 	// solving pass1 (up->down)
-	for(int i=1;i<n;i++)
+	for(NSInteger i = 1; i < n; i++)
     {
 		double k = matrix[i][0]/matrix[i-1][1];
 		matrix[i][1] -= k*matrix[i-1][2];
@@ -54,7 +62,7 @@
 		result[i] -= k*result[i-1];
 	}
 	// solving pass2 (down->up)
-	for(int i=n-2;i>=0;i--)
+	for(NSInteger i = n - 2; i >= 0; i--)
     {
 		double k = matrix[i][2]/matrix[i+1][1];
 		matrix[i][1] -= k*matrix[i+1][0];

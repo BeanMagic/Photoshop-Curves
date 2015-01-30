@@ -29,7 +29,7 @@
     _curveView.backgroundColor = [UIColor whiteColor];
     NSArray *sd = [CurvesHelper secondDerivative:points];
     
-    //初始化曲线前映射
+    //Init curve map before
     int firstX = [[points objectAtIndex:0] CGPointValue].x;
     int firstY = [[points objectAtIndex:0] CGPointValue].y;
     for (int i = 0; i < firstX; i++)
@@ -37,7 +37,7 @@
         [_curveView setColorMap:firstY toIndex:i];
     }
     
-    //初始化曲线映射
+    //Init curve map
     for(int i = 0; i<[points count] - 1; i++)
     {
         CGPoint cur = [[points objectAtIndex:i] CGPointValue];
@@ -56,7 +56,7 @@
         }
     }
     
-    //初始化曲线后映射
+    //Init curve map after
     int lastX = [[points lastObject] CGPointValue].x;
     int lastY = [[points lastObject] CGPointValue].y;
     for (int i = 255; i > lastX; i--)
@@ -127,6 +127,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor grayColor];
     
     UIControl *control = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
     [control addTarget:self action:@selector(endEditing) forControlEvents:UIControlEventTouchDown];

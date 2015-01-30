@@ -10,7 +10,15 @@
 
 @interface CurvesHelper : NSObject
 
-//传入数组包含全是CGPoint的字符串表示,传出数组包含全是double的NSNumber;
+/*
+ * @param:pointArray : Key points as NSValue:
+        @[
+            [NSValue valueWithCGPoint:(CGPointMake(input1, output1))],
+            [NSValue valueWithCGPoint:(CGPointMake(input2, output2))],
+            ...
+         ]
+ * @return: second derivative array, each member is an NSNumber.
+ */
 + (NSArray *)secondDerivative:(NSArray *)pointArray;
 
 @end
